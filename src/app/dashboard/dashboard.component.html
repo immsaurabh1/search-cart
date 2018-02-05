@@ -1,0 +1,68 @@
+<div class="">
+
+	<div class="search-container">
+
+		<div class="col-xs-12 search-row">
+			<form>
+				<input placeholder="Search Products" class="full-width search-field" id="searchProducts" (focusout)="onNameKeyUp($event)"
+				 type="search">
+				<button class="search-clear" type="reset"><span class="icon-close-sign search-close"></span> </button>
+				<button class="glyphicon glyphicon-search searchform-submit" (click)="submitSearch($event)" id="search-articles-button" value="search"
+				 type="button" title="Search">
+				<span class="search-text">Search</span>
+					</button>
+			</form>
+		</div>
+	</div>
+</div>
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+<div class="alert-message hide">No Product found with your Search criteria Please try other KeyWords</div>
+<div class="row sorting-section">
+	<div class="col-md-6">
+		<div class="row">
+		<div class="col-xs-6 col-md-2">Sort By</div>
+		<div class="col-xs-6 col-md-10 ">
+			<select (change)="updateSortField($event)">
+					<option value="default">Default</option>
+					<option value="price">Price</option>
+					<option value="discount">Discount</option>
+					<option value="bestsellersrank">Best Sellers</option>
+					<option value="newArrivalsRank">New Arrival</option>
+					<option value="trendingRank">Trending</option>
+					<option value="categoryRank">Category Rank</option>
+</select></div>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="row">
+		<div class="col-md-12 text-center">Sort Order</div>
+		<div class="col-md-5 text-right">Ascending</div>
+		<div class="col-md-2 text-center">
+			<label class="switch">
+  <input (change)="updateSortOrder($event)" type="checkbox">
+  <span class="slider"></span>
+</label>
+		</div>
+<div class="col-md-5 ">Descending</div>
+		</div>
+	</div>
+</div>
+<div class="row filter-catalog">
+	<div class="col-md-2 col-xs-12 filter-fixed">
+		<div *ngIf="result.facets">
+			<app-filter [filterData]="result.facets" (updateFilter)="updateGlobalFilter($event)"></app-filter>
+		</div>
+	</div>
+
+	<div class="col-md-10 col-xs-12 product-catalog-section" lazy-load-images>
+
+		<div *ngIf="result.productList">
+
+			<app-product-catalog [(catalogData)]="result.productList"></app-product-catalog>
+		</div>
+	</div>
+</div>
+<footer class="container-bg">
+	<span class="text-left"><button>Prev Page</button></span><span class="text-right"><button>Next Page</button></span>
+	<p>Contact information: <a href="mailto:someone@example.com">someone@example.com</a>.</p>
+</footer>

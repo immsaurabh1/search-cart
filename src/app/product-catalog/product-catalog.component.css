@@ -1,0 +1,40 @@
+.product-box{
+    border-bottom: 1px solid #004a96;
+    border-right:1px solid #004a96;
+    display:inline-block;
+    padding:10px;
+}
+.product-img{
+    height:200px;
+    width:100%;
+    border:1px solid black;
+    background-color: white;
+}
+.product-box:hover{
+  width: 250px;
+  /* This is 52px total. 1/2 of that is for top and the other half is for bottom. */
+
+  /* Below we are not using -26px for margin-top because .box has 6px border and 10px margin. */
+  /* That 16px is then divide by 2 since it's for both top and bottom, or 8px per side. */
+  /* Having said that, 26px - 8px is 18px. We need negative value to position it correctly. */
+  margin-top: -18px;
+ -moz-box-shadow:    0 0 50px black;
+ -webkit-box-shadow: 0 0 50px black;
+ box-shadow:         0 0 50px black;    
+}
+.prod-title{
+    font-weight:bold;
+    font-size:16px;
+    width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.prod-category{
+    font-size:16px;
+    width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
