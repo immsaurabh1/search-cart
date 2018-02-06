@@ -1,0 +1,13 @@
+.filter-label{
+    font-size:18px;
+    color: palevioletred;
+}
+a{
+    color:black;
+    font-size:14px;
+}
+
+.collapsed-section{
+    overflow-y: auto;
+    height: 100px;
+}

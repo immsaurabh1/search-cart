@@ -1,44 +1,44 @@
-import { Component, OnInit ,Input, Output,EventEmitter,OnChanges} from '@angular/core';
+import { Component, OnInit , Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-filter',
   templateUrl: './filter.component.html',
   styleUrls: ['./filter.component.css']
 })
-export class FilterComponent implements OnInit,OnChanges {
+export class FilterComponent implements OnInit {
 
-  filterValues:any;
+  filterValues: any;
+
   @Output()
-  updateFilter:EventEmitter<object>=new EventEmitter();
-  @Input()
-  filterData:object;
+  updateFilter: EventEmitter<object> = new EventEmitter();
 
-  selectedFilter(event: any){
-    let target= event.target
-    let filterParent=target.getAttribute('data-parent');
-    let filterValue=target.getAttribute("data-filter");
-    let selectedFilter:any={
-      selectedParent:filterParent,
-      selectedValue:filterValue
-    }
-    if(target.checked){
-      selectedFilter.addFilter=true;
-    }
-    else{
-      selectedFilter.addFilter=false;
+  @Input()
+  filterData: object;
+
+  //  this function updates the filter value and emit it for parent component
+
+  selectedFilter(event: any) {
+    const target = event.target;
+    const filterParent = target.getAttribute('data-parent');
+    const filterValue = target.getAttribute('data-filter');
+    const selectedFilter: any = {
+      selectedParent: filterParent,
+      selectedValue: filterValue
+    };
+    if (target.checked) {
+      selectedFilter.addFilter = true;
+    } else {
+      selectedFilter.addFilter = false;
     }
      this.updateFilter.emit(selectedFilter);
   }
+
   constructor() { }
-   generateArray(obj){
-   return Object.keys(obj).map((key)=>{ return key});
+
+   generateArray(obj) {
+   return Object.keys(obj).map((key) => { return key });
 }
   ngOnInit() {
-    console.log(this.filterData);
-    this.filterValues=this.filterData;
+    this.filterValues = this.filterData;
   }
-   ngOnChanges(){
-    // this.filterValues=this.filterData;
-  }
-
 }

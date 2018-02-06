@@ -6,35 +6,30 @@ import { HttpClient} from '@angular/common/http';
 export class ProductService {
 
   constructor(private http: HttpClient ) { }
-  baseUrl: string = "http://api.shortlyst.com/v1/products?";
-  apiKey: string ="apikey=2aac3b7ba599424cad9620fa6449d482";
-  public constructUrl(data:object){
-    let filterCriteria:string="";
-    for(let propName in data) {
-    if(data.hasOwnProperty(propName)) {
-       let objVal=data[propName];
-       if(objVal.constructor === Array){
-        filterCriteria+=propName+"="+objVal.join()+"&";
-       }
-      else{
-        filterCriteria+=propName+"="+objVal+"&";
+  baseUrl: string = 'http://api.shortlyst.com/v1/products?';
+  apiKey: string = 'apikey=2aac3b7ba599424cad9620fa6449d482';
+
+  // function to construct url using base url and apikey
+
+    public constructUrl(data: object) {
+      let filterCriteria: string = '';
+      for (const propName in data) {
+      if (data.hasOwnProperty(propName)) {
+        const objVal = data[propName];
+        if (objVal.constructor === Array) {
+          filterCriteria += propName + '=' + objVal.join() + '&';
+        } else {
+          filterCriteria += propName + '=' + objVal + '&';
+        }
       }
     }
-
+        return this.baseUrl + filterCriteria + this.apiKey;
   }
-      return this.baseUrl+filterCriteria+this.apiKey;
-}
-    getProducts(filterParams:any){
-    let requestUrl=this.constructUrl(filterParams);
-    console.log(requestUrl);
-    return this.http.get(requestUrl)
-      // .toPromise()
-      // .then(response => {
-      //   console.log(response);
-      //   this.results=response.json()
-      // })
-      // .catch(console.log);
-  };
-    
-  
+
+  //  this function is used to make service call to the api with request params
+
+    getProducts(filterParams: any) {
+    const requestUrl = this.constructUrl(filterParams);
+    return this.http.get(requestUrl);
+  }
 }

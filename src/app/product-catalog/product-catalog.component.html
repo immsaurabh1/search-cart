@@ -1,40 +1,23 @@
- <div class=" col-md-3 col-xs-6 product-box text-center" *ngFor="let prod of prodData">
-			<div   data-toggle="modal" data-target="#myModal" (onclick)="createModalData($event,prod)"><img class="product-img" [attr.data-src]="prod.imageUrl"></div>
-				<div class="prod-title">
-					 {{prod.title}}
-				</div>
-					<div>Rs. {{prod.salePrice}}</div>
-					<div class="prod-category"><p *ngIf="prod.category">{{prod.category}}</p><p *ngIf="!prod.category">{{prod.division}}</p></div>
-			</div> 
-<!-- <div class="col-md-12"  *ngFor="let prod of prodData">
-	<div class="col-md-4"  (onclick)="createModalData($event)"><img class="product-img" [attr.data-src]="prod.imageUrl"></div>
-	<div class="cl-md-8">
-		<div class="prod-title">
-					 {{prod.title}}
-				</div>
-					<div>Rs. {{prod.salePrice}}</div>
-					<div class="prod-category">{{prod.category}}</div>
-		</div>
-
-</div> -->
-
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
-      </div>
-      <div class="modal-body edit-content">
-                    ...
-                </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
-  </div>
+<div class=" col-md-3 col-6 product-box text-center" *ngFor="let prod of prodData">
+   <div><img class="product-img" [attr.data-src]="prod.imageUrl"></div>
+   <div class="prod-title">
+      {{prod.title}}
+   </div>
+   <div>Sale Price: {{prod.salePrice}}</div>
+   <div><strong> Price: {{prod.offerPrice}}</strong></div>
+   <div class="prod-category">
+      <p *ngIf="prod.category">{{prod.category}}</p>
+      <p *ngIf="!prod.category">{{prod.division}}</p>
+   </div>
 </div>
+<!-- <div class="col-md-12"  *ngFor="let prod of prodData">
+   <div class="col-md-4"  (onclick)="createModalData($event)"><img class="product-img" [attr.data-src]="prod.imageUrl"></div>
+   <div class="cl-md-8">
+   	<div class="prod-title">
+   				 {{prod.title}}
+   			</div>
+   				<div>Rs. {{prod.salePrice}}</div>
+   				<div class="prod-category">{{prod.category}}</div>
+   	</div>
+   
+   </div> -->

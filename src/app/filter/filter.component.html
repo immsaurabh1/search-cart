@@ -1,11 +1,11 @@
 <div >
-  <span class="filter-label">Filter by</span>
-				<div *ngFor="let filter of filterValues ;let i=index">
-					<a href="#{{filter.name}}"   data-toggle="collapse">{{filter.name|uppercase}}</a>
-					<div id="{{filter.name}}" class="collapse  in">
-						<div    class="text-right"*ngFor="let key of generateArray(filter.value)">
-							<span>{{key}}</span><input attr.data-parent="{{filter.name}}Filter" attr.data-filter="{{key}}" type="checkbox" (change)="selectedFilter($event)">
-						</div>
-					</div>
-        </div>
-        </div>
+   <span class="filter-label">Filter by</span>
+   <div *ngFor="let filter of filterValues ;let i=index">
+      <a href="#{{filter.name}}"   data-toggle="collapse">{{filter.name|uppercase}}</a>
+      <div id="{{filter.name}}" class="collapse  in collapsed-section">
+         <div    class="text-right"*ngFor="let key of generateArray(filter.value)">
+            <span>{{key}}</span><input attr.data-parent="{{filter.name}}Filter" attr.data-filter="{{key}}" type="checkbox" (change)="selectedFilter($event)">
+         </div>
+      </div>
+   </div>
+</div>
