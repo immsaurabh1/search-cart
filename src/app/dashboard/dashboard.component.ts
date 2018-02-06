@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
   prevPageFlag: boolean = true;
   nextPageFlag: boolean = false;
   filterParams: any = {};
-  result: object = [];
+  result: object = {};
   sortOrder: string = 'asc';
   sortField: string = 'default';
   public loading = false;
